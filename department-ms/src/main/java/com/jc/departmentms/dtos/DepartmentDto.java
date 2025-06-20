@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 public class DepartmentDto {
     private Long id;
-    private String departmentName;
     private String code;
+    private String departmentName;
+
 }
