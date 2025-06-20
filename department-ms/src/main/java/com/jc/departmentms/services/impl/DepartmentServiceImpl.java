@@ -4,8 +4,7 @@ import com.jc.departmentms.dtos.DepartmentDto;
 import com.jc.departmentms.models.Department;
 import com.jc.departmentms.repositories.DepartmentRepository;
 import com.jc.departmentms.services.DepartmentService;
-import com.jc.departmentms.services.mappers.DepartmentMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.jc.departmentms.mappers.DepartmentMapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -36,5 +35,12 @@ public class DepartmentServiceImpl implements DepartmentService {
          //Conversion Entité->Dto avec le mapper
         return mapper.toDto(department);
 
+    }
+
+    @Override
+    public DepartmentDto createDepartment(DepartmentDto departmentDto) {
+        Department department = mapper.toEntity(departmentDto);
+        Department savedDepart =  departmentRepository.save(department);
+        return mapper.toDto(savedDepart);
     }
 }
